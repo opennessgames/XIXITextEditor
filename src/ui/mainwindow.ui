@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>944</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTextEdit" name="XixiTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>941</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>941</width>
+      <height>531</height>
+     </size>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="XixiMenubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>944</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="XixiFileMenu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="XixiNewFile"/>
+    <addaction name="XixiOpenFile"/>
+    <addaction name="XixiSaveFile"/>
+    <addaction name="XixiSaveAsFile"/>
+    <addaction name="separator"/>
+    <addaction name="XixiExit"/>
+   </widget>
+   <widget class="QMenu" name="XixiEditMenu">
+    <property name="title">
+     <string>编辑</string>
+    </property>
+    <addaction name="XixiUndo"/>
+    <addaction name="separator"/>
+    <addaction name="XixiCut"/>
+    <addaction name="XixiCopy"/>
+    <addaction name="XixiPaste"/>
+    <addaction name="separator"/>
+    <addaction name="XixiSeleAll"/>
+   </widget>
+   <widget class="QMenu" name="XixiFormat">
+    <property name="title">
+     <string>格式</string>
+    </property>
+    <addaction name="XixiAutoLine"/>
+    <addaction name="XixiFont"/>
+   </widget>
+   <widget class="QMenu" name="XixiView">
+    <property name="title">
+     <string>查看</string>
+    </property>
+    <addaction name="XixiStatusBar"/>
+   </widget>
+   <widget class="QMenu" name="XixiHelp">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="XixiLookHelp"/>
+    <addaction name="separator"/>
+    <addaction name="XixiAbout"/>
+   </widget>
+   <addaction name="XixiFileMenu"/>
+   <addaction name="XixiEditMenu"/>
+   <addaction name="XixiFormat"/>
+   <addaction name="XixiView"/>
+   <addaction name="XixiHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="XixiNewFile">
+   <property name="text">
+    <string>NewFile</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="XixiOpenFile">
+   <property name="text">
+    <string>OpenFile</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="XixiSaveFile">
+   <property name="text">
+    <string>SaveFile</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="XixiSaveAsFile">
+   <property name="text">
+    <string>SaveAsFile</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="XixiExit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Q</string>
+   </property>
+  </action>
+  <action name="XixiUndo">
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="XixiCut">
+   <property name="text">
+    <string>Cut</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="XixiCopy">
+   <property name="text">
+    <string>Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="XixiPaste">
+   <property name="text">
+    <string>Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="XixiSeleAll">
+   <property name="text">
+    <string>SelectAll</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="XixiAutoLine">
+   <property name="text">
+    <string>自动换行</string>
+   </property>
+  </action>
+  <action name="XixiFont">
+   <property name="text">
+    <string>字体</string>
+   </property>
+  </action>
+  <action name="XixiStatusBar">
+   <property name="text">
+    <string>状态栏</string>
+   </property>
+  </action>
+  <action name="XixiLookHelp">
+   <property name="text">
+    <string>查看帮助</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>关于记事本</string>
+   </property>
+  </action>
+  <action name="XixiAbout">
+   <property name="text">
+    <string>关于记事本</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
