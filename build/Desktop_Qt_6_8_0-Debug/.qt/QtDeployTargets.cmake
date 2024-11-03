@@ -1,2 +1,0 @@
-set(__QT_DEPLOY_TARGET_XIXITextEditor_FILE /home/yzx/文档/QtProject/XIXITextEditor/build/Desktop_Qt_6_8_0-Debug/XIXITextEditor)
-set(__QT_DEPLOY_TARGET_XIXITextEditor_TYPE EXECUTABLE)

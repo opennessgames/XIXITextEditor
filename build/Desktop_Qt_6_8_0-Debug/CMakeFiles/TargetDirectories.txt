@@ -1,9 +1,0 @@
-/home/yzx/文档/QtProject/XIXITextEditor/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/XIXITextEditor.dir
-/home/yzx/文档/QtProject/XIXITextEditor/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/edit_cache.dir
-/home/yzx/文档/QtProject/XIXITextEditor/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/rebuild_cache.dir
-/home/yzx/文档/QtProject/XIXITextEditor/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/list_install_components.dir
-/home/yzx/文档/QtProject/XIXITextEditor/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/install.dir
-/home/yzx/文档/QtProject/XIXITextEditor/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/install/local.dir
-/home/yzx/文档/QtProject/XIXITextEditor/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/install/strip.dir
-/home/yzx/文档/QtProject/XIXITextEditor/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/XIXITextEditor_autogen_timestamp_deps.dir
-/home/yzx/文档/QtProject/XIXITextEditor/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/XIXITextEditor_autogen.dir
