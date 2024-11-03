@@ -7,12 +7,14 @@
 #include <QMessageBox>
 #include <QTextStream>
 #include <QSaveFile>
+#include <QIcon>
 #include <stdio.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    this->setWindowIcon(QIcon(":/appico.png"));
     ui->setupUi(this);
     setWindowTitle("记事本");
     connect(ui->XixiFileMenu,&QMenu::triggered,this,&MainWindow::XIXI_ActionTriggter);
@@ -77,6 +79,7 @@ void MainWindow::XIXI_NewFile()
         ui->XixiTextEdit->clear();
         CurFilePath = QString();
         ui->XixiTextEdit->document()->setModified(false);
+        setWindowTitle("Default - 记事本");
         statusBar()->showMessage("新建文件成功喵~",2000);
     }
 }
@@ -87,6 +90,7 @@ void MainWindow::XIXI_OpenFile()
         QString FileName = QFileDialog::getOpenFileName(this);
         if (!FileName.isEmpty()){
             XIXI_LoadFile(FileName);
+            setWindowTitle(FileName + " - 记事本");
         }
     }
 }
@@ -172,6 +176,7 @@ bool MainWindow::XIXI_WriteFile(const QString &FilePath)
 
     CurFilePath = FilePath;
     ui->XixiTextEdit->document()->setModified(false);
+    setWindowTitle(CurFilePath + " - 记事本");
     statusBar()->showMessage("文件保存成功喵~",2000);
     return true;
 }

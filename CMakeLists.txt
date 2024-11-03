@@ -16,13 +16,14 @@ set(PROJECT_SOURCES
         src/main.cpp
         src/mainwindow.cpp
         src/mainwindow.h
-        ui/mainwindow.ui
+        src/ui/mainwindow.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(XIXITextEditor
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        img/ico.qrc
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET XIXITextEditor APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
