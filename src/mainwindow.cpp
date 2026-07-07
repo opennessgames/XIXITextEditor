@@ -1,6 +1,14 @@
+/*
+ * @Author: xixi_
+ * @Date: 2024-11-02 17-07-37
+ * @LastEditors: xixi_
+ * @LastEditTime: 2026-07-08 02:55:42
+ * @FilePath: /XIXITextEditor/src/mainwindow.cpp
+ * Copyright (c) 2017-2026 by xixi_ , All Rights Reserved.
+ */
+
 #include "mainwindow.h"
 #include "./ui/ui_mainwindow.h"
-#include <xixi/DynamicStack.h> /* xixi_ 动态栈库 */
 #include <QMetaEnum>
 #include <QFileDialog>
 #include <QFile>
@@ -8,17 +16,15 @@
 #include <QTextStream>
 #include <QSaveFile>
 #include <QIcon>
-#include <stdio.h>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     this->setWindowIcon(QIcon(":/appico.png"));
     ui->setupUi(this);
     setWindowTitle("记事本");
-    connect(ui->XixiFileMenu,&QMenu::triggered,this,&MainWindow::XIXI_ActionTriggter);
-    connect(ui->XixiEditMenu,&QMenu::triggered,this,&MainWindow::XIXI_ActionTriggter);
+    connect(ui->XixiFileMenu, &QMenu::triggered, this, &MainWindow::XIXI_ActionTriggter);
+    connect(ui->XixiEditMenu, &QMenu::triggered, this, &MainWindow::XIXI_ActionTriggter);
     connect(ui->XixiTextEdit, &QTextEdit::cursorPositionChanged, this, &MainWindow::XIXI_UpdateCursorPosition);
 }
 
@@ -31,13 +37,15 @@ void MainWindow::XIXI_ActionTriggter(QAction *act)
 {
     QMetaEnum me = QMetaEnum::fromType<XixiActKind::XixiActionKind>();
     bool IsOk;
-    int KeyVal = me.keyToValue(act->text().toStdString().c_str(),&IsOk);
-    printf("%d\n",KeyVal);
-    if (!IsOk){
+    int KeyVal = me.keyToValue(act->text().toStdString().c_str(), &IsOk);
+    printf("%d\n", KeyVal);
+    if (!IsOk)
+    {
         return;
     }
 
-    switch (static_cast<XixiActKind::XixiActionKind>(KeyVal)) {
+    switch (static_cast<XixiActKind::XixiActionKind>(KeyVal))
+    {
     case XixiActKind::XixiActionKind::NewFile:
         XIXI_NewFile();
         break;
@@ -75,20 +83,23 @@ void MainWindow::XIXI_ActionTriggter(QAction *act)
 
 void MainWindow::XIXI_NewFile()
 {
-    if (XIXI_MayBeSave()){
+    if (XIXI_MayBeSave())
+    {
         ui->XixiTextEdit->clear();
         CurFilePath = QString();
         ui->XixiTextEdit->document()->setModified(false);
         setWindowTitle("Default - 记事本");
-        statusBar()->showMessage("新建文件成功喵~",2000);
+        statusBar()->showMessage("新建文件成功喵~", 2000);
     }
 }
 
 void MainWindow::XIXI_OpenFile()
 {
-    if (XIXI_MayBeSave()){
+    if (XIXI_MayBeSave())
+    {
         QString FileName = QFileDialog::getOpenFileName(this);
-        if (!FileName.isEmpty()){
+        if (!FileName.isEmpty())
+        {
             XIXI_LoadFile(FileName);
             setWindowTitle(FileName + " - 记事本");
         }
@@ -97,9 +108,12 @@ void MainWindow::XIXI_OpenFile()
 
 bool MainWindow::XIXI_SaveFile()
 {
-    if (CurFilePath.isEmpty()){
+    if (CurFilePath.isEmpty())
+    {
         return XIXI_SaveAsFile();
-    } else {
+    }
+    else
+    {
         return XIXI_WriteFile(CurFilePath);
     }
 }
@@ -109,14 +123,18 @@ bool MainWindow::XIXI_SaveAsFile()
     QFileDialog dialog(this);
     dialog.setWindowModality(Qt::WindowModal);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
-    if (dialog.exec() != QDialog::Accepted){
+    if (dialog.exec() != QDialog::Accepted)
+    {
         return false;
     }
 
     const QStringList selectedFiles = dialog.selectedFiles();
-    if (!selectedFiles.isEmpty()) {
+    if (!selectedFiles.isEmpty())
+    {
         return XIXI_WriteFile(selectedFiles.first());
-    } else {
+    }
+    else
+    {
         return false;
     }
 }
@@ -130,16 +148,18 @@ void MainWindow::XIXI_UpdateCursorPosition()
 
 bool MainWindow::XIXI_MayBeSave()
 {
-    if (!ui->XixiTextEdit->document()->isModified()){
+    if (!ui->XixiTextEdit->document()->isModified())
+    {
         return true;
     }
-    const QMessageBox::StandardButton BtnVal = QMessageBox::warning(this,qApp->applicationDisplayName(),"文件未保存!",QMessageBox::Save|QMessageBox::Discard|QMessageBox::Cancel);
-    switch (BtnVal) {
+    const QMessageBox::StandardButton BtnVal = QMessageBox::warning(this, qApp->applicationDisplayName(), "文件未保存!", QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    switch (BtnVal)
+    {
     case QMessageBox::Save:
         return XIXI_SaveFile();
     case QMessageBox::Cancel:
         return false;
-    default :
+    default:
         return true;
     }
 }
@@ -147,8 +167,9 @@ bool MainWindow::XIXI_MayBeSave()
 void MainWindow::XIXI_LoadFile(const QString &FilePath)
 {
     QFile TextContent(FilePath);
-    if (!TextContent.open(QFile::ReadOnly|QFile::Text)){
-        QMessageBox::warning(this,qApp->applicationName(),"无法打开文件喵~" );
+    if (!TextContent.open(QFile::ReadOnly | QFile::Text))
+    {
+        QMessageBox::warning(this, qApp->applicationName(), "无法打开文件喵~");
         return;
     }
 
@@ -157,26 +178,30 @@ void MainWindow::XIXI_LoadFile(const QString &FilePath)
 
     CurFilePath = FilePath;
     ui->XixiTextEdit->document()->setModified(false);
-    statusBar()->showMessage("文件打开成功喵~",2000);
+    statusBar()->showMessage("文件打开成功喵~", 2000);
 }
 
 bool MainWindow::XIXI_WriteFile(const QString &FilePath)
 {
     QSaveFile File(FilePath);
-    if (File.open(QFile::WriteOnly | QFile::Text)){
+    if (File.open(QFile::WriteOnly | QFile::Text))
+    {
         QTextStream Write(&File);
-        Write<<ui->XixiTextEdit->toPlainText();
-        if (!File.commit()){
-            QMessageBox::warning(this,qApp->applicationName(),"文件保存失败喵~");
+        Write << ui->XixiTextEdit->toPlainText();
+        if (!File.commit())
+        {
+            QMessageBox::warning(this, qApp->applicationName(), "文件保存失败喵~");
             return false;
         }
-    } else {
+    }
+    else
+    {
         return false;
     }
 
     CurFilePath = FilePath;
     ui->XixiTextEdit->document()->setModified(false);
     setWindowTitle(CurFilePath + " - 记事本");
-    statusBar()->showMessage("文件保存成功喵~",2000);
+    statusBar()->showMessage("文件保存成功喵~", 2000);
     return true;
 }
